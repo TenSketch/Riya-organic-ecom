@@ -1,0 +1,9 @@
+[build]
+  base = "ecommerce-UI"
+  command = "npm run build"
+  publish = "ecommerce-UI/build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
