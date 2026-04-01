@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import './styles/index.scss';
@@ -16,7 +16,7 @@ import Signup from './components/signup/Signup';
 import ForgotPassword from './components/login/ForgotPassword';
 import ResetPassword from './components/login/ResetPassword';
 import CustomerDashboard from './components/customer/CustomerDashboard';
-import Orders from './components/orders/Orders';
+// import Orders from './components/orders/Orders';
 import Customers from './components/customers/Customers';
 import Categories from './components/categories/Categories';
 import PurchaseOrders from './components/purchaseOrders/PurchaseOrders';
@@ -88,6 +88,7 @@ const theme = createTheme({
   },
 });
 
+/*
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem('token');
@@ -96,6 +97,7 @@ const ProtectedRoute = ({ children }) => {
   }
   return children;
 };
+*/
 
 // Admin Protected Route Component
 const AdminProtectedRoute = ({ children }) => {
@@ -146,7 +148,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
+      <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <div className="App" contentEditable={false}>
           <Routes>
             {/* Public Routes */}

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Menu as MenuIcon,
-  Close as CloseIcon,
   Dashboard as DashboardIcon,
   Inventory as ProductsIcon,
   ShoppingCart as OrdersIcon,
@@ -13,7 +12,6 @@ import {
   Assessment as ReportsIcon,
   Feedback as EnquiriesIcon,
   Logout as LogoutIcon,
-  Notifications as NotificationsIcon,
   AccountCircle as AccountIcon,
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon

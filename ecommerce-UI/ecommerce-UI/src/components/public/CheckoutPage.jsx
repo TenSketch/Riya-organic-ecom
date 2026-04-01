@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+
 import API_BASE_URL from '../../services/apiConfig';
 import { useNavigate, useLocation } from 'react-router-dom';
 import PublicHeader from '../shared/PublicHeader';
-import CustomerTabs from '../shared/CustomerTabs';
+
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { lightgreenbox } from '../../classConstat';
 
@@ -96,12 +96,7 @@ const CheckoutPage = () => {
   useEffect(() => {
     setDeliveryCharge(calculateDeliveryCharge(deliveryForm.state, totalWeight));
   }, [deliveryForm.state, totalWeight]);
-  const handleTabChange = (tab) => {
-    if (tab === 'overview') navigate('/customer/dashboard');
-    else if (tab === 'orders') navigate('/customer/dashboard?tab=orders');
-    else if (tab === 'profile') navigate('/customer/dashboard?tab=profile');
-    else if (tab === 'shop') navigate('/shop');
-  };
+
 
   const handleDeliveryFormChange = (field, value) => {
     setDeliveryForm(prev => ({ ...prev, [field]: value }));

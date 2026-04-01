@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { authAPI } from "../../services/api";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PublicHeader from "../shared/PublicHeader";
 import Footer from "../public/Footer";
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -14,7 +14,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
+
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({

@@ -96,7 +96,6 @@ const OfflineOrders = () => {
   const [loading, setLoading] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);
   const [products, setProducts] = useState([]);
-  const [productsLoading, setProductsLoading] = useState(false);
   const [dateRange, setDateRange] = useState({
     fromDate: '',
     toDate: ''
@@ -144,13 +143,11 @@ const OfflineOrders = () => {
 
   const fetchProducts = async () => {
     try {
-      setProductsLoading(true);
       const response = await productsAPI.getAll();
       setProducts(response.data.products || []);
     } catch (error) {
       console.error('Error fetching products:', error);
     } finally {
-      setProductsLoading(false);
     }
   };
 
@@ -207,7 +204,7 @@ const OfflineOrders = () => {
     setSubmitting(true);
     setError('');
     try {
-      const response = await ordersAPI.createOffline(formData);      
+      await ordersAPI.createOffline(formData);      
       setShowAddForm(false);
       setFormData({
         customerName: '',

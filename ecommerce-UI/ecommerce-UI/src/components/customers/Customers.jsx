@@ -57,7 +57,7 @@ const Customers = () => {
     e && e.preventDefault();
     try {
       setSaving(true);
-      const res = await customersAPI.create(form);
+      await customersAPI.create(form);
       setPopup({ show: true, message: 'Customer created', type: 'success' });
       setShowAddModal(false);
       fetchCustomers();

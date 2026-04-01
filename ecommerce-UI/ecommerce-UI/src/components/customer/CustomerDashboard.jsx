@@ -5,12 +5,9 @@ import API_BASE_URL from '../../services/apiConfig';
 import Footer from '../public/Footer';
 import PublicHeader from '../shared/PublicHeader';
 import { lightgreenbox } from '../../classConstat';
-import InsertChartIcon from '@mui/icons-material/InsertChart';
-import ScreenSearchDesktopIcon from '@mui/icons-material/ScreenSearchDesktop';
 import ViewInArIcon from '@mui/icons-material/ViewInAr';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
-import SearchIcon from '@mui/icons-material/Search';
 
 const CustomerDashboard = () => {
   const [user, setUser] = useState(null);
@@ -58,11 +55,13 @@ const CustomerDashboard = () => {
     }
   };
 
+/*
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     navigate('/login');
   };
+*/
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);

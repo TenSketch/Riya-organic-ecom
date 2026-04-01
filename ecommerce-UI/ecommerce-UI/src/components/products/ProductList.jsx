@@ -434,7 +434,6 @@ const ProductList = () => {
                     {(() => {
                       const category = categories.find(cat => cat._id === product.category_id);
                       const categoryName = category?.name || 'Unknown';
-                      const categoryLower = categoryName.toLowerCase();
 
                       // Generate consistent color and icon based on category name
                       const getCategoryStyle = (name) => {

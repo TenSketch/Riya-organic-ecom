@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PublicHeader from '../shared/PublicHeader';
 import CustomerTabs from '../shared/CustomerTabs';
 
 const OrderSuccessPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const [customerName, setCustomerName] = useState('');
 
   useEffect(() => {

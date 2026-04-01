@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   TrendingUp as TrendingUpIcon,
-  TrendingDown as TrendingDownIcon,
   ShoppingCart as ShoppingCartIcon,
   Inventory as InventoryIcon,
   People as PeopleIcon,
@@ -23,7 +22,6 @@ const DashboardHome = () => {
   const [topProducts, setTopProducts] = useState([]);
   const [recentOrders, setRecentOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     loadDashboardData();
@@ -43,7 +41,7 @@ const DashboardHome = () => {
       setTopProducts(topProductsRes.data.products);
       setRecentOrders(recentOrdersRes.data.orders);
     } catch (err) {
-      setError('Failed to load dashboard data');
+      console.error('Failed to load dashboard data', err);
     } finally {
       setLoading(false);
     }

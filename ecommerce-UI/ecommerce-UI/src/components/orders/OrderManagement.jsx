@@ -202,7 +202,7 @@ const OrderManagement = () => {
   const handleSave = async (orderId) => {
     setSaving(true);
     try {      
-      const response = await ordersAPI.setDeliveryLink(orderId, { delivery_link: deliveryLink });
+      await ordersAPI.setDeliveryLink(orderId, { delivery_link: deliveryLink });
       setEditingId(null);
       setDeliveryLink('');
       // Force refresh the orders data

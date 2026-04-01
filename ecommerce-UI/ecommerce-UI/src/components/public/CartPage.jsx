@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity, clearCart, toggleItemSelection, selectAllItems } from '../../cartSlice';
 import PublicHeader from '../shared/PublicHeader';
@@ -11,6 +11,7 @@ const CartPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
   // Calculate cart totals
   const selectedItems = cartItems.filter(item => item.selected);
   const subtotal = selectedItems.reduce((sum, item) => sum + ((item.discount_price || item.price) * (item.quantity || 1)), 0);
@@ -19,19 +20,9 @@ const CartPage = () => {
   const total = subtotal + tax + shipping;
   const selectedCount = selectedItems.length;
   const allSelected = cartItems.length > 0 && cartItems.every(item => item.selected);
-  const [customerName, setCustomerName] = useState('');
 
-  useEffect(() => {
-    const userStr = localStorage.getItem('user');
-    if (userStr) {
-      try {
-        const user = JSON.parse(userStr);
-        if (user.role === 'customer') {
-          setCustomerName(user.name || 'User');
-        }
-      } catch { }
-    }
-  }, []);
+
+
 
   const handleQuantityChange = (id, change) => {
     const item = cartItems.find(item => item._id === id);

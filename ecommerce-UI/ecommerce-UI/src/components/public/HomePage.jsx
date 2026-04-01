@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { productsAPI, categoriesAPI } from '../../services/api';
 import PublicHeader from '../shared/PublicHeader';
-import { useDispatch } from 'react-redux';
-import { addToCart, saveCart } from '../../cartSlice';
-import { useSelector } from 'react-redux';
+
 import Footer from './Footer';
 import heroImg from '../../assets/herobg-1.png';
 import heroImg2 from '../../assets/herobg-2.png';
@@ -33,8 +31,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [categoriesLoading, setCategoriesLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.items);
+
 
   const heroImages = [
     heroImg,

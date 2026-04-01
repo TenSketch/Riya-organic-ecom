@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { productsAPI, categoriesAPI } from '../../services/api';
 import PublicHeader from '../shared/PublicHeader';
-import CustomerTabs from '../shared/CustomerTabs';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, saveCart } from '../../cartSlice';
 import Footer from './Footer';
@@ -28,33 +26,21 @@ const ShopPage = () => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
-  const [customerName, setCustomerName] = useState('');
+
   const [categories, setCategories] = useState([]);
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
-  const [activeTab] = useState('shop');
-  const navigate = useNavigate();
 
   useEffect(() => {
     fetchProducts();
     fetchCategories();
-    // Check if logged in as customer
-    const userStr = localStorage.getItem('user');
-    if (userStr) {
-      try {
-        const user = JSON.parse(userStr);
-        if (user.role === 'customer') {
-          setCustomerName(user.name || 'Valued Customer');
-        }
-      } catch { }
-    }
   }, []);
 
   useEffect(() => {
     if (cartItems && cartItems.length >= 0) {
       dispatch(saveCart(cartItems));
     }
-  }, []);
+  }, [cartItems, dispatch]);
   const fetchProducts = async () => {
     try {
       setLoading(true);
@@ -96,12 +82,7 @@ const ShopPage = () => {
     });
   };
 
-  const handleTabChange = (tab) => {
-    if (tab === 'overview') navigate('/customer/dashboard');
-    else if (tab === 'orders') navigate('/customer/dashboard?tab=orders');
-    else if (tab === 'profile') navigate('/customer/dashboard?tab=profile');
-    else if (tab === 'shop') navigate('/shop');
-  };
+
 
   return (
     <div className="public-website">
